@@ -14,20 +14,23 @@ namespace functional_programming_vs_imperative
         static void Main(string[] args)
         {
 
-            #region Imparative 
-             foreach(double x in mydata)
-            {
-                Console.WriteLine(SubtractTen(Square(AddOne(x))).ToString());
-            }
-            Console.Read();
-            #endregion
-
-            //#region Declarative
-
-            //mydata.Select(AddOne).Select(Square).Select(SubtractTen).ToList().ForEach((x)=>Console.WriteLine(x.ToString()));
-
+            //#region Imparative 
+            // foreach(double x in mydata)
+            //{
+            //    Console.WriteLine(SubtractTen(Square(AddOne(x))).ToString());
+            //}
             //Console.Read();
             //#endregion
+
+            #region Declarative
+
+            mydata.Select(AddOne).Select(Square).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+
+            Console.Read();
+
+            mydata.Select(AddOne).Select(Square).Where(x=>x>20).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+            Console.Read();
+            #endregion
         }
 
         public static double AddOne(double x)
@@ -44,5 +47,10 @@ namespace functional_programming_vs_imperative
         {
             return x-10;
         }
+
+
+
+
+        
     }
 }
