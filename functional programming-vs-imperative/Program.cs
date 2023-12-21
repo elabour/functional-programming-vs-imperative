@@ -28,7 +28,10 @@ namespace functional_programming_vs_imperative
 
             Console.Read();
 
-            mydata.Select(AddOne).Select(Square).Where(x=>x>20).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+            mydata.Select(AddOne).Select(Square).Where(x=> x>20).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+            mydata.Select(AddOne).Select(Square).Where(x => x < 70).OrderBy(x => x).Take(2).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+
+
             Console.Read();
             #endregion
         }
