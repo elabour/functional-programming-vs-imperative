@@ -9,51 +9,56 @@ namespace functional_programming_vs_imperative
 {
     internal class Program
     {
-        private static List<double> mydata=new List<double>() { 7,4,5,6,3,8,10};
+        // قائمة المرتبات
+        private static List<double> Salaries = new List<double>() { 100, 3000, 1200, 1500, 1000, 1800, 2000, 900, 600 };
 
         static void Main(string[] args)
         {
 
-            //#region Imparative 
-            // foreach(double x in mydata)
-            //{
-            //    Console.WriteLine(SubtractTen(Square(AddOne(x))).ToString());
-            //}
-            //Console.Read();
-            //#endregion
+            #region Imparative 
+            foreach (double x in Salaries)
+            {
+                Console.WriteLine(AddFiftyPercent(AddOneHunderd(CutFifty(x))).ToString());
+            }
+            Console.Read();
+            #endregion
 
             #region Declarative
 
-            mydata.Select(AddOne).Select(Square).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+            //Salaries.Select(CutFifty).Select(AddOneHunderd).Select(AddFiftyPercent).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
 
-            Console.Read();
+            //Console.Read();
 
-            //mydata.Select(AddOne).Select(Square).Where(x=> x>20).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
-            //mydata.Select(AddOne).Select(Square).Where(x => x < 70).OrderBy(x => x).Take(2).Select(SubtractTen).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+            //Salaries.Select(IncomeTax).Select(SocialSecurityTex).Where(x => x > 20).Select(AddBonus).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
+            //Salaries.Select(IncomeTax).Select(SocialSecurityTex).Where(x => x < 70).OrderBy(x => x).Take(2).Select(AddBonus).ToList().ForEach((x) => Console.WriteLine(x.ToString()));
 
 
             Console.Read();
             #endregion
         }
 
-        public static double AddOne(double x)
+
+
+        // خصم ضرائب  50 دينار
+        public static double CutFifty(double x)
         {
-            return x+1;
+
+            return x - 50;
         }
 
-        public static double Square(double x)
+        // اضافة علاوات 100 دينار
+        public static double AddOneHunderd(double x)
         {
-            return Math.Pow(x,2);
+
+            return x + 100;
         }
 
-        public static double SubtractTen(double x)
+        //  زيادة  100 دينار على المرتب   
+        public static double AddFiftyPercent(double x)
         {
-            return x-10;
+            double percent = x * 50 / 100;
+            return x + percent;
         }
 
-
-
-
-        
     }
 }
